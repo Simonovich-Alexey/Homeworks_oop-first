@@ -7,13 +7,14 @@ class Student:
         self.grades = {}
 
     def rate_hw(self, lector, course, grade):
-        if isinstance(lector, Lecturer) and course in lector.courses_attached and course in self.courses_in_progress:
+        if isinstance(lector, Lecturer) and course in lector.courses_attached and course in self.courses_in_progress \
+                and 0 <= grade <= 10:
             if course in lector.grades_from_students:
                 lector.grades_from_students[course] += [grade]
             else:
                 lector.grades_from_students[course] = [grade]
         else:
-            return 'Ошибка'
+            raise TypeError('Ошибка! Введенные данные не')
 
 
 class Mentor:
